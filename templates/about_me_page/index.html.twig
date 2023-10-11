@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kilka informacji o mnie{% endblock %}
+
+{% block body %}
+<style>
+ font-size:24px;
+</style>
+<div>
+<h1>Kilka informacji o mnie</h1>
+<ul>
+    {% for information in informations%}
+
+ <li>  <b> {{(information.key)}}:</b> {{(information.value)}}</br></li>
+
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

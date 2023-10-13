@@ -17,9 +17,14 @@
 
 <h1>{{article.title}}</h1>
 <span>{{article.content}}</span>
+<div>
+        {% for image in article.images[1:] %}
 
+            <img src="{{ image.path }}" alt="{{ image.alt }}" width="300" >
 
- {#<span> <a href="articles" > Powrót do strony głównej</a></span>#}
+        {% endfor %}
+</div>
+
 </div>
 {% endblock %}
 

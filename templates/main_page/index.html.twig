@@ -2,8 +2,16 @@
 
 {% block title %}Mój blog{% endblock %}
 
+       
+
+        {% block javascripts %}
+        {% endblock %}
+
+
+
+
 {% block body %}
-<div>
+
     <div>
 
         <ul>
@@ -18,5 +26,5 @@
             {{include('articles/article_teaser.html.twig', {article: lastArticle})}}
         </div>
 
-</div>
+
 {% endblock %}

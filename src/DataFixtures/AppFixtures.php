@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\ContactInformation;
 use App\Entity\Image;
 use App\Entity\InformationAboutMe;
 use App\Entity\Notatki;
@@ -89,6 +90,21 @@ class AppFixtures extends Fixture
 
         $dodajnotatke = new Notatki (Title:'To jest tytuł notatki',ContentNote:'To jest treść pierwszej notatki');
         $manager->persist($dodajnotatke);
+
+        $contactInfo1 = new ContactInformation();
+        $contactInfo1 ->setKey(key:'e-mail');
+        $contactInfo1 ->setValue(value:'ghys@wp.pl');
+        $manager ->persist($contactInfo1);
+
+        $contactInfo2 = new ContactInformation();
+        $contactInfo2 ->setKey(key:'Telefon');
+        $contactInfo2 ->setValue(value:'885447184');
+        $manager ->persist($contactInfo2);
+
+        $contactInfo3 = new ContactInformation();
+        $contactInfo3 ->setKey(key:'Miasto');
+        $contactInfo3 ->setValue(value:'Bydgoszcz');
+        $manager ->persist($contactInfo3);
 
 
 

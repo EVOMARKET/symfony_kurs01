@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rejestr aut{% endblock %}
+
+{% block body %}
+
+{{include('menu.html.twig')}}
+{{dump()}}
+
+{% for auto in auta %}
+<div>
+
+    <span>Numer seryjny:{{auto.serial_nr}} </span></br>
+    <span>Model:{{auto.model}} </span></br>
+   <span><b>Opis:</b></br>{{auto.opis}} </span></br>
+<img src="{{auto.images|first['path']}}" alt="{{auto.images|first['alt']  }}" width="300"></br>
+
+
+    <span>Kolor:{{auto.kolor}} </span></br>
+    <span>Cena: {{auto.cena}} </span></br></br></br>
+
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}

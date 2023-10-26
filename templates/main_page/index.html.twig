@@ -2,7 +2,7 @@
 
 {% block title %}Mój blog{% endblock %}
 
-       
+
 
         {% block javascripts %}
         {% endblock %}
@@ -12,15 +12,8 @@
 
 {% block body %}
 
-    <div>
-
-        <ul>
-            <li><a href="articles">Artykuły</a> </li>
-            <li><a href="about-me">O mnie</a> </li>
-            <li><a href="contact">Kontakt</a> </li>
-            <li><a href="note">Notatki</a> </li>
-        </ul>
-    </div>
+   {{include('menu.html.twig')}}
+   
         <div>
             <h2>Ostatni artykuł</h2>
             {{include('articles/article_teaser.html.twig', {article: lastArticle})}}

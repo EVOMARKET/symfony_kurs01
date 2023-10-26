@@ -38,11 +38,6 @@ class Article
     }
 
 
-
-
-
-
-
     public function getId(): ?int
     {
         return $this->id;

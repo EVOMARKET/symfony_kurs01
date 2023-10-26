@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Auta;
+use App\Entity\AutosPhotos;
 use App\Entity\ContactInformation;
 use App\Entity\Image;
 use App\Entity\InformationAboutMe;
@@ -44,9 +46,7 @@ class AppFixtures extends Fixture
         $manager->persist($article);
 
         $article2->setTitle('To jst drugi artykuł');
-        $article2->setContent(
-            'To jest treść drugiego artykułu'
-        );
+        $article2->setContent('To jest treść drugiego artykułu');
         $article2->setDateAdded(new \DateTime('2023-01-02'));
         $manager->persist($article2);
 
@@ -106,6 +106,51 @@ class AppFixtures extends Fixture
         $contactInfo3 ->setValue(value:'Bydgoszcz');
         $manager ->persist($contactInfo3);
 
+        $autoInfo1 = new Auta();
+        $autoInfo1->setSerialNr(serial_nr:'01');
+        $autoInfo1->setModel(model:'SEAT');
+        $autoInfo1->setDescription(description:'Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu i wpisanie w internetowej wyszukiwarce ‘lorem ipsum’ spowoduje znalezienie bardzo wielu stron, które wciąż są w budowie. Wiele wersji tekstu ewoluowało i zmieniało się przez lata, czasem przez przypadek, czasem specjalnie (humorystyczne wstawki itd).');
+        $autoInfo1->setKolor(kolor:'POPIELATY');
+        $autoInfo1->setPrice(price:'48.000 zł');
+        $manager ->persist($autoInfo1);
+
+        $autoInfo2 = new Auta();
+        $autoInfo2->setSerialNr(serial_nr:'02');
+        $autoInfo2->setModel(model:'AUDI');
+        $autoInfo2->setDescription(description:'Jest dostępnych wiele różnych wersji Lorem Ipsum, ale większość zmieniła się pod wpływem dodanego humoru czy przypadkowych słów, które nawet w najmniejszym stopniu nie przypominają istniejących. Jeśli masz zamiar użyć fragmentu Lorem Ipsum, lepiej mieć pewność, że nie ma niczego „dziwnego” w środku tekstu. Wszystkie Internetowe generatory Lorem Ipsum mają tendencje do kopiowania już istniejących bloków, co czyni nasz pierwszym prawdziwym generatorem w Internecie. Używamy zawierającego ponad 200 łacińskich słów słownika, w kontekście wielu znanych sentencji, by wygenerować tekst wyglądający odpowiednio. To wszystko czyni „nasz” Lorem Ipsum wolnym od powtórzeń, humorystycznych wstawek czy niecharakterystycznych słów.'
+    );
+        $autoInfo2->setKolor(kolor:'BIAŁY');
+        $autoInfo2->setPrice(price:'88.000 zł');
+        $manager ->persist($autoInfo2);
+
+        $autoInfo3 = new Auta();
+        $autoInfo3->setSerialNr(serial_nr:'03');
+        $autoInfo3->setModel(model:'MERCEDES');
+        $autoInfo3->setDescription(description:'W przeciwieństwie do rozpowszechnionych opinii, Lorem Ipsum nie jest tylko przypadkowym tekstem. Ma ono korzenie w klasycznej łacińskiej literaturze z 45 roku przed Chrystusem, czyli ponad 2000 lat temu! Richard McClintock, wykładowca łaciny na uniwersytecie Hampden-Sydney w Virginii, przyjrzał się uważniej jednemu z najbardziej niejasnych słów w Lorem Ipsum – consectetur – i po wielu poszukiwaniach odnalazł niezaprzeczalne źródło: Lorem Ipsum pochodzi z fragmentów (1.10.32 i 1.10.33) „de Finibus Bonorum et Malorum”, czyli „O granicy dobra i zła”, napisanej właśnie w 45 p.n.e. przez Cycerona. Jest to bardzo popularna w czasach renesansu rozprawa na temat etyki. Pierwszy wiersz Lorem Ipsum, „Lorem ipsum dolor sit amet...” pochodzi właśnie z sekcji 1.10.32.');
+        $autoInfo3->setKolor(kolor:'CZARNY');
+        $autoInfo3->setPrice(price:'148.000 zł');
+        $manager ->persist($autoInfo3);
+
+        $autoImage1 = new AutosPhotos();
+        $autoImage1 ->setPath(path:'seat.jpg');
+        $autoImage1 ->setTitle(title:'seat');
+        $autoImage1 ->setAlt(alt:'seat alt');
+        $autoInfo1->addAutosPhoto($autoImage1);
+        $manager ->persist($autoImage1);
+
+        $autoImage2 = new AutosPhotos();
+        $autoImage2 ->setPath(path:'audi.jpg');
+        $autoImage2 ->setTitle(title:'audi');
+        $autoImage2 ->setAlt(alt:'audi alt');
+        $autoInfo2->addAutosPhoto($autoImage2);
+        $manager ->persist($autoImage2);
+
+        $autoImage3 = new AutosPhotos();
+        $autoImage3 ->setPath(path:'Mercedes.jpg');
+        $autoImage3 ->setTitle(title:'Mercedes');
+        $autoImage3 ->setAlt(alt:'Mercedes alt');
+        $autoInfo3->addAutosPhoto($autoImage3);
+        $manager ->persist($autoImage3);
 
 
         $manager->flush();

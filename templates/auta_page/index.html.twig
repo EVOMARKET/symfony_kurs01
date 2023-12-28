@@ -9,16 +9,14 @@
 
 {% for auto in auta %}
 <div>
-
+<a href="{{auto.link}}" target="_blank">
     <span>Numer seryjny:{{auto.serial_nr}} </span></br>
     <span>Model:{{auto.model}} </span></br>
    <span><b>Opis:</b></br>{{auto.opis}} </span></br>
-<img src="{{auto.images|first['path']}}" alt="{{auto.images|first['alt']  }}" width="300"></br>
-
-
     <span>Kolor:{{auto.kolor}} </span></br>
     <span>Cena: {{auto.cena}} </span></br></br></br>
-
+<img src="{{auto.images|first['path']}}" alt="{{auto.images|first['alt']  }}" width="300"></br>
+</a>
 </div>
 
 

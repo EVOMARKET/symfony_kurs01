@@ -14,14 +14,16 @@ class AutoProvider
 
     public function prepareAuta($auta, bool $shortendesc=true): array
     {
-
         $dane = [];
         foreach ($auta as $auto){
-            $trnsformeddataautoImage = $this->autoImageProvider->transformAutoImageForTwig(
+
+            $trnsformeddataautoImage = $this->autoImageProvider->transformAutoImageForTwig
+            (
                 $auto->getAutosPhotos()->toArray(),
             );
 
-            if($shortendesc){
+            if($shortendesc)
+            {
                 $opis = substr($auto->getDescription(),0,15)."...";
             }
            else{ $opis = $auto->getDescription();};
@@ -30,11 +32,11 @@ class AutoProvider
          $dane['auta'][] =[
              'serial_nr'=>$auto->getSerialNr(),
              'model'=>$auto->getModel(),
-             'opis'=>$opis,
+             'opis'=>$auto->getDescription(),
              'kolor'=>$auto->getKolor(),
              'cena'=>$auto->getPrice(),
              'images'=>$trnsformeddataautoImage,
-
+             'link'=>'owners/' .$auto->getId(),
 
                      ];
      }

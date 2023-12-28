@@ -8,6 +8,7 @@ use App\Entity\ContactInformation;
 use App\Entity\Image;
 use App\Entity\InformationAboutMe;
 use App\Entity\Notatki;
+use App\Entity\Owners;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Article;
@@ -151,6 +152,30 @@ class AppFixtures extends Fixture
         $autoImage3 ->setAlt(alt:'Mercedes alt');
         $autoInfo3->addAutosPhoto($autoImage3);
         $manager ->persist($autoImage3);
+
+        $autoOwner1 =new Owners();
+        $autoOwner1 ->setName(Name:'Hys');
+        $autoOwner1 ->setFirstName(FirstName:'Grzegorz');
+        $autoOwner1 ->setPurchaseDate(new \DateTime('2023-10-26'));
+        $autoOwner1 ->setSaleDate(new \DateTime('2023-10-29'));
+        $autoInfo1 ->addOwner($autoOwner1);
+        $manager->persist($autoOwner1);
+
+        $autoOwner2 =new Owners();
+        $autoOwner2 ->setName(Name:'Hys');
+        $autoOwner2 ->setFirstName(FirstName:'Paweł');
+        $autoOwner2 ->setPurchaseDate(new \DateTime('2023-10-29'));
+       // $autoOwner2 ->setSaleDate(new\DateTime());
+        $autoInfo2 ->addOwner($autoOwner2);
+        $manager->persist($autoOwner2);
+
+        $autoOwner3 =new Owners();
+        $autoOwner3 ->setName(Name:'Kowalski');
+        $autoOwner3 ->setFirstName(FirstName:'Robert');
+        $autoOwner3 ->setPurchaseDate(new\DateTime('2023-10-27'));
+        $autoOwner3 ->setSaleDate(new\DateTime('null'));
+        $autoInfo1 ->addOwner($autoOwner3);
+        $manager->persist($autoOwner3);
 
 
         $manager->flush();

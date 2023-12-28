@@ -33,12 +33,18 @@ class Auta
     #[ORM\Column(length: 2000, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\OneToMany(mappedBy: 'Auto_rel', targetEntity: Owners::class)]
+    private Collection $owners;
+
+
+
 
 
     public function __construct()
     {
         $this->autosPhotos = new ArrayCollection();
-        
+        $this->owners = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -135,6 +141,38 @@ class Auta
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Owners>
+     */
+    public function getOwners(): Collection
+    {
+        return $this->owners;
+    }
+
+    public function addOwner(Owners $owner): static
+    {
+        if (!$this->owners->contains($owner)) {
+            $this->owners->add($owner);
+            $owner->setAutoRel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOwner(Owners $owner): static
+    {
+        if ($this->owners->removeElement($owner)) {
+            // set the owning side to null (unless already changed)
+            if ($owner->getAutoRel() === $this) {
+                $owner->setAutoRel(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 
 
 }

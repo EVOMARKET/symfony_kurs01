@@ -38,6 +38,7 @@ class ArticleProvider {
             'link' => 'article/' . $article->getId(),
             'dateAdded' => $article->getDateAdded(),
             'images' => $transformedImagesData,
+            
         ];
     }
 }
